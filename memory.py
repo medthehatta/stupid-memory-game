@@ -144,7 +144,15 @@ def main():
 
         tries += 1
 
-    print("Finished in %d tries" % (tries,))
+    perfect = int(1.5*g.size*g.size)
+    fails = tries-perfect
+
+    if fails > 0:
+        print("Finished in %d tries, which is %d worse than perfect" % (tries,fails))
+    elif fails == 0:
+        print("Finished in %d tries.  Flawless!" % (tries,))
+    else:
+        print("Finished in %d tries.  Looks like you had %d lucky guesses ;)" % (tries, -fails))
 
 if __name__ == '__main__':
     main()
