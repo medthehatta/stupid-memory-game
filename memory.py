@@ -4,6 +4,12 @@
 import random
 import math
 import re
+import time
+
+
+OPTIONS = 'LION TIGER BEAR OCTOPUS BAT FOOT YETI PELICAN'.split()
+INITIAL_SHOW =1
+
 
 class Grid(object):
 
@@ -108,13 +114,19 @@ class Grid(object):
         return self
 
 def main():
-    g = Grid('LION TIGER BEAR OCTOPUS BAT FOOT YETI PELICAN'.split())
+    initial_show = INITIAL_SHOW
+    g = Grid(OPTIONS)
     queued = []
     visible = []
     tries = 0
 
+    if initial_show:
+        print('\n'*100)
+        print(g.show())
+        time.sleep(3)
+
     print('\n'*100)
-    print(g)
+    print(g.unshow())
 
     while 1:
         try:
@@ -147,7 +159,10 @@ def main():
 
         tries += 1
 
-    perfect = int(1.5*g.size*g.size)
+    if initial_show:
+        perfect = int(g.size*g.size/2)
+    else:
+        perfect = int(1.5*g.size*g.size)
     fails = tries-perfect
 
     if fails > 0:
