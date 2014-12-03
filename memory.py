@@ -113,6 +113,9 @@ def main():
     visible = []
     tries = 0
 
+    print('\n'*100)
+    print(g)
+
     while 1:
         try:
             if len(queued) < 2: 
